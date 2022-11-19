@@ -1,0 +1,41 @@
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.157);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.scrollbar::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:active {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.854);
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.324);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.854);
+}
+
+.places-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 300px;
+}
+
+.mapContainer {
+    width: 50%;
+    height: 40vh;
+}
+
+.combobox-input {
+    width: 100%;
+    padding: 0.5rem;
+}
