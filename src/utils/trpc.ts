@@ -1,17 +1,17 @@
-import { httpBatchLink, loggerLink } from '@trpc/client';
-import { createTRPCNext } from '@trpc/next';
+import { httpBatchLink, loggerLink } from '@trpc/client'
+import { createTRPCNext } from '@trpc/next'
 
-import type { AppRouter } from '../server/routers/_app';
+import type { AppRouter } from '../server/routers/_app'
 
 function getBaseUrl() {
   if (typeof window !== 'undefined')
     // browser should use relative path
-    return '';
+    return ''
 
-  if (process.browser) return ''; // Browser should use current path
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
+  if (process.browser) return '' // Browser should use current path
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` // SSR should use vercel url
 
-  return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+  return `http://localhost:${process.env.PORT ?? 3000}` // dev SSR should use localhost
 }
 
 export const trpc = createTRPCNext<AppRouter>({
@@ -35,11 +35,11 @@ export const trpc = createTRPCNext<AppRouter>({
        * @link https://tanstack.com/query/v4/docs/reference/QueryClient
        * */
       queryClientConfig: { defaultOptions: { queries: { staleTime: 10 } } },
-    };
+    }
   },
   /**
    * @link https://trpc.io/docs/ssr
    * */
   ssr: false,
-});
+})
 // => { useQuery: ..., useMutation: ...}
