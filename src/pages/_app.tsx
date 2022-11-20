@@ -10,7 +10,10 @@ import '@fontsource/inter/700.css'
 
 import { trpc } from '../utils/trpc'
 // eslint-disable @typescript-eslint/ban-types
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<
+  TProps = Record<string, unknown>,
+  TInitialProps = TProps
+> = NextPage<TProps, TInitialProps> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -19,12 +22,10 @@ type AppPropsWithLayout = AppProps & {
 }
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // function MyApp({ Component, pageProps }) {
-  // const getLayout = Component.getLayout ?? ((page) => page)
+  const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <ChakraProvider>{getLayout(<Component {...pageProps} />)}</ChakraProvider>
   )
 }
 
